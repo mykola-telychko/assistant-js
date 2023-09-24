@@ -16,11 +16,11 @@ function uniqueElArray(arr) {
   return uniqueArray;
 }
 
-// take through one
+// direct and inverse action on the array -- start
 function explodeArrayInterleave(srcArr) {
   const evenArr = [];
   const oddArr = [];
-
+  // take through one
   for (let i = 0; i < srcArr.length; i++) {
     if (i % 2 === 0) {
       evenArr.push(srcArr[i]);
@@ -30,7 +30,6 @@ function explodeArrayInterleave(srcArr) {
   }
   return [evenArr, oddArr];
 }
-// same explodeArray
 function joinArraysInterleave(arr1, arr2) {
   if (arr1.length !== arr2.length) throw new Error('diff arr len');
   const result = [];
@@ -40,6 +39,7 @@ function joinArraysInterleave(arr1, arr2) {
   }
   return result;
 }
+// direct and inverse action on the array -- end
 
 function splitArrayInHalf(arr) {
   const middleIndex = Math.floor(arr.length / 2);
@@ -48,17 +48,35 @@ function splitArrayInHalf(arr) {
 
   return [firstHalf, secondHalf];
 }
+// getting random element from array
+function getRandElFromArray(arr) {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+}
+// draggingElements from arr1 to arr2 - specified qty
+function draggingElements(sourceArray, targetArray, count) {
+  if (!Array.isArray(sourceArray) || !Array.isArray(targetArray) || count < 0) {
+    throw new Error('Параметри некоректні');
+  }
+  const elementsToMove = sourceArray.slice(0, count); // copy el not del
+  const newTargetArray = [...targetArray, ...elementsToMove];
+  return newTargetArray;
+}
+//
 
+//
+
+//
 let [half1, half2] = splitArrayInHalf(arr0);
-
 // join two arrays  explodeArray
 const uniqueElArr = uniqueElArray(arrNonUniqueElements);
 
 // direct and inverse action on the array -- start
 const [evenArr, oddArr] = explodeArrayInterleave(uniqueElArr);
-const unionArrs = joinArraysInterleave(evenArr, oddArr);
+const augmentedArr = draggingElements(evenArr, oddArr, 3);
+
+const unionArrs = joinArraysInterleave(half1, half2);
 // direct and inverse action on the array -- end
 
-console.log('unionArrs', unionArrs, '\n', 'oddArr', oddArr);
-// filter unique
-console.log(uniqueElArr);
+// console.log('augmentedArr', evenArr, oddArr, augmentedArr);
+// console.log(uniqueElArr);
