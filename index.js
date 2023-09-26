@@ -3,6 +3,38 @@ let arrNonUniqueElements = [
 ];
 const arr0 = [1, 2, 3, 4, 5, 6];
 
+const array1 = [
+  { id: 275, ipUsr: '444.42.22.109' },
+  { id: 28, ipUsr: '444.63.22.127' },
+  { id: 12, ipUsr: '544.43.32.246' },
+  { id: 18, ipUsr: '545.46.92.122' },
+  { id: 15, ipUsr: '564.75.66.136' },
+];
+
+const array2 = [
+  { id: 75, ipUsr: '222.63.62.339' },
+  { id: 14, ipUsr: '544.43.32.246' },
+  { id: 58, ipUsr: '545.46.92.122' },
+];
+
+function getCommonElements(arrSrc, arr) {
+  return arrSrc.filter((el) => arr.includes(el));
+}
+function getDifferentElements(arrSrc, arr) {
+  return arrSrc.filter((el) => !arr.includes(el));
+}
+
+// getCommonElements - getDifferentElements - union = compareArrays
+// compareArrays('com', aar[], arr2[]) else 'euqal'
+// compareArrays('diff', aar[], arr2[]) else 'euqal'
+
+const arrBig = [1, 3, 4, 5, 6, 7];
+const arrSmall = [1, 3, 4];
+// const commonElements = getCommonElements(arrBig, arrSmall);
+const diffElements = getCommonElements(arrBig, arrSmall);
+
+console.log(diffElements); // Output will be [1, 3, 4]
+
 function uniqueElArray(arr) {
   const uniqueArray = [];
   const seenValues = {};
@@ -62,6 +94,11 @@ function draggingElements(sourceArray, targetArray, count) {
   const newTargetArray = [...targetArray, ...elementsToMove];
   return newTargetArray;
 }
+
+function arrayOfObjDiff(array1, array2) {
+  const ipSet = new Set(array2.map((obj) => obj.ipUsr));
+  return array1.filter((obj) => !ipSet.has(obj.ipUsr));
+}
 //
 
 //
@@ -77,6 +114,9 @@ const augmentedArr = draggingElements(evenArr, oddArr, 3);
 
 const unionArrs = joinArraysInterleave(half1, half2);
 // direct and inverse action on the array -- end
+
+let arrObj = arrayOfObjDiff(array1, array2);
+console.log(arrObj);
 
 // console.log('augmentedArr', evenArr, oddArr, augmentedArr);
 // console.log(uniqueElArr);

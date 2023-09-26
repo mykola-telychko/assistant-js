@@ -1,1 +1,2 @@
 1) describe every fns in separate file 
+2) compareArrays - create fn
