@@ -23,17 +23,51 @@ function getCommonElements(arrSrc, arr) {
 function getDifferentElements(arrSrc, arr) {
   return arrSrc.filter((el) => !arr.includes(el));
 }
+function equalArrays(array1, array2) {
+  console.log(array1, array2);
+
+  // Check if the arrays have the same length
+  if (array1.length !== array2.length) return false;
+
+  // Sort both arrays to ensure order doesn't affect comparison
+  array1.sort();
+  array2.sort();
+  // Compare the sorted arrays element by element
+  for (let i = 0; i < array1.length; i++) {
+    // Use strict equality (===) to check for equality
+    if (array1[i] !== array2[i]) {
+      return false;
+    }
+  }
+  // If all elements are equal, the arrays are equal
+  return true;
+}
 
 // getCommonElements - getDifferentElements - union = compareArrays
 // compareArrays('com', aar[], arr2[]) else 'euqal'
 // compareArrays('diff', aar[], arr2[]) else 'euqal'
+function compareArrays(arr1, arr2, mod = true) {
+  if (mod !== false) {
+    // console.log('diffEl', arr1, arr2);
+    if (mod === 'com') {
+      return getCommonElements(arr1, arr2);
+    } else if (mod === 'diff') {
+      // if [] then false
+      return getDifferentElements(arr1, arr2);
+    } else {
+      console.log('diffElements');
+      return equalArrays(arr1, arr2);
+    }
+  }
+}
 
 const arrBig = [1, 3, 4, 5, 6, 7];
+const arrBig2 = [1, 3, 4, 5, 6, 7];
 const arrSmall = [1, 3, 4];
 // const commonElements = getCommonElements(arrBig, arrSmall);
-const diffElements = getCommonElements(arrBig, arrSmall);
-
-console.log(diffElements); // Output will be [1, 3, 4]
+// const diffElements = getCommonElements(arrBig, arrSmall);
+let arr32 = compareArrays(arrBig, arrBig2);
+console.log('arr32', arr32); // Output will be [1, 3, 4]
 
 function uniqueElArray(arr) {
   const uniqueArray = [];
@@ -111,12 +145,26 @@ const uniqueElArr = uniqueElArray(arrNonUniqueElements);
 // direct and inverse action on the array -- start
 const [evenArr, oddArr] = explodeArrayInterleave(uniqueElArr);
 const augmentedArr = draggingElements(evenArr, oddArr, 3);
-
 const unionArrs = joinArraysInterleave(half1, half2);
 // direct and inverse action on the array -- end
 
-let arrObj = arrayOfObjDiff(array1, array2);
-console.log(arrObj);
-
+// let arrObj = arrayOfObjDiff(array1, array2);
+// console.log(arrObj);
 // console.log('augmentedArr', evenArr, oddArr, augmentedArr);
 // console.log(uniqueElArr);
+
+/////////// OBJECT ////////////
+function objKeyExists(key, obj) {
+  //   if (obj.hasOwnProperty('key1'))
+  //   if ('key2' in obj)
+  //     if ( obj?.nested?.key !== undefined ) {
+  // if (obj.hasOwnProperty(key)) {
+  //   return true;
+  // } else {
+  //   return false;
+  // }
+  return obj.hasOwnProperty(key) ?? true;
+}
+
+let usr = { name: 'igor', age: 23 };
+// console.log(objKeyExists('name', usr));

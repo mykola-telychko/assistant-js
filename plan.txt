@@ -1,2 +1,3 @@
 1) describe every fns in separate file 
-2) compareArrays - create fn
+2) compareArrays - more correct responses 
+3) objKeyExists -> objLevelKeyExists
