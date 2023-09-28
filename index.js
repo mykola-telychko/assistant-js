@@ -17,6 +17,27 @@ const array2 = [
   { id: 58, ipUsr: '545.46.92.122' },
 ];
 
+const obje = {
+  name: 'John',
+  age: 30,
+  city: 'New York',
+};
+
+function objKeys(obj) {
+  return Object.keys(obj);
+}
+function objValues(obj) {
+  return Object.values(obj);
+}
+function explodeObj(obj) {
+  return Object.entries(obj);
+}
+function sortByNestedKey(arr, key) {
+  return arr.sort((a, b) => a[key] - b[key]);
+}
+let arObj = explodeObj(obje);
+console.log(arObj);
+
 function getCommonElements(arrSrc, arr) {
   return arrSrc.filter((el) => arr.includes(el));
 }
@@ -24,20 +45,15 @@ function getDifferentElements(arrSrc, arr) {
   return arrSrc.filter((el) => !arr.includes(el));
 }
 function equalArrays(array1, array2) {
-  console.log(array1, array2);
-
   // Check if the arrays have the same length
   if (array1.length !== array2.length) return false;
-
   // Sort both arrays to ensure order doesn't affect comparison
   array1.sort();
   array2.sort();
   // Compare the sorted arrays element by element
   for (let i = 0; i < array1.length; i++) {
     // Use strict equality (===) to check for equality
-    if (array1[i] !== array2[i]) {
-      return false;
-    }
+    if (array1[i] !== array2[i]) return false;
   }
   // If all elements are equal, the arrays are equal
   return true;
@@ -55,7 +71,7 @@ function compareArrays(arr1, arr2, mod = true) {
       // if [] then false
       return getDifferentElements(arr1, arr2);
     } else {
-      console.log('diffElements');
+      // console.log('diffElements');
       return equalArrays(arr1, arr2);
     }
   }
@@ -67,7 +83,7 @@ const arrSmall = [1, 3, 4];
 // const commonElements = getCommonElements(arrBig, arrSmall);
 // const diffElements = getCommonElements(arrBig, arrSmall);
 let arr32 = compareArrays(arrBig, arrBig2);
-console.log('arr32', arr32); // Output will be [1, 3, 4]
+// console.log('arr32', arr32); // Output will be [1, 3, 4]
 
 function uniqueElArray(arr) {
   const uniqueArray = [];
