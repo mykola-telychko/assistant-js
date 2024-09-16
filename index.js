@@ -59,6 +59,16 @@ function equalArrays(array1, array2) {
   return true;
 }
 
+// compare array  ( LIKE INTERSECT IN MYSQL )
+let arrEnable = [123, 12, 23, 35];
+let arrDisable = [3, 4, 23, 35];
+
+const compareArrays2 = (arr, arrForCompare) => {
+    return arr.filter(value => arrForCompare.includes(value));
+}
+
+console.log(compareArrays2(arrEnable, arrDisable));
+
 // getCommonElements - getDifferentElements - union = compareArrays
 // compareArrays('com', aar[], arr2[]) else 'euqal'
 // compareArrays('diff', aar[], arr2[]) else 'euqal'
