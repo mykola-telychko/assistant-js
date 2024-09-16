@@ -21,6 +21,7 @@ const revStr = (str) => { return str.split("").reverse().join(""); }
 
 
 // GROUP BY
+// Можна зробити через хеш карту, тоді буде не O(n^2), а просто O(n)
 const data = [
   { usrId: 1, bookId: 876 },
   { usrId: 1, bookId: 189 },
@@ -48,3 +49,6 @@ const result = data.reduce((acc, { usrId, bookId }) => {
 }, []); // start from empty array
 
 console.log(result);
+
+// SEARCH KEY ON VALUE
+let getKeyByValue = (object, value) => { return Object.keys(object).find(key => object[key] === value); }
