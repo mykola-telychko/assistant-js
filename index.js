@@ -23,21 +23,6 @@ const obje = {
   city: 'New York',
 };
 
-function objKeys(obj) {
-  return Object.keys(obj);
-}
-function objValues(obj) {
-  return Object.values(obj);
-}
-function explodeObj(obj) {
-  return Object.entries(obj);
-}
-function sortByNestedKey(arr, key) {
-  return arr.sort((a, b) => a[key] - b[key]);
-}
-let arObj = explodeObj(obje);
-console.log(arObj);
-
 function getCommonElements(arrSrc, arr) {
   return arrSrc.filter((el) => arr.includes(el));
 }
@@ -58,16 +43,6 @@ function equalArrays(array1, array2) {
   // If all elements are equal, the arrays are equal
   return true;
 }
-
-// compare array  ( LIKE INTERSECT IN MYSQL )
-let arrEnable = [123, 12, 23, 35];
-let arrDisable = [3, 4, 23, 35];
-
-const compareArrays2 = (arr, arrForCompare) => {
-    return arr.filter(value => arrForCompare.includes(value));
-}
-
-console.log(compareArrays2(arrEnable, arrDisable));
 
 // getCommonElements - getDifferentElements - union = compareArrays
 // compareArrays('com', aar[], arr2[]) else 'euqal'

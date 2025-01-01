@@ -74,4 +74,38 @@ function separateOddEven(numbers) {
     }, { odd: [], even: [] }); // Initialize the result object with empty arrays for odd and even numbers
 }
   
+
+/**
+ * Sorts an array of objects by a specific numeric property (key) in ascending order.
+ *
+ * @param {Object[]} arr - An array of objects to be sorted.
+ * @param {string} key - The key (property name) within each object to sort by. 
+ *                       The value of this key should be numeric for correct sorting.
+ * @returns {Object[]} - A new array sorted in ascending order based on the specified key.
+ *
+ * The function uses the `Array.prototype.sort()` method to compare objects by their nested key values.
+ */
+function sortByNestedKey(arr, key) {
+    return arr.sort((a, b) => a[key] - b[key]);
+}
+
+
+/**
+ * Compares two arrays and returns a new array containing elements that are present in both arrays.
+ *
+ * - compare array  ( LIKE INTERSECT IN MYSQL )
+ * - indexes from two array (arrEnable, arrDisable)
+ * 
+ * @param {Array} arr - The main array to compare.
+ * @param {Array} arrForCompare - The array to compare against.
+ * @returns {Array} - A new array containing elements that exist in both `arr` and `arrForCompare`.
+ *
+ * The function uses `Array.prototype.filter()` to iterate through `arr` and checks for inclusion 
+ * of each element in `arrForCompare` using `Array.prototype.includes()`.
+ */
+const compareArrays2 = (arr, arrForCompare) => {
+  return arr.filter(value => arrForCompare.includes(value));
+};
+
+
   
