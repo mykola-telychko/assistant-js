@@ -1,3 +1,8 @@
-1) describe every fns in separate file 
+1) describe every fns in separate file (index.html)
 2) compareArrays - more correct responses 
 3) objKeyExists -> objLevelKeyExists
+
+uniqueElArray - add checker type. fn must work only with: 
+Single-type arrays, Typed arrays, Homogeneous arrays
+
+explodeArrayInterleave / joinArraysInterleave - adapting for array with diff length

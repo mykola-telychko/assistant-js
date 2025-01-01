@@ -95,44 +95,6 @@ const arrSmall = [1, 3, 4];
 let arr32 = compareArrays(arrBig, arrBig2);
 // console.log('arr32', arr32); // Output will be [1, 3, 4]
 
-function uniqueElArray(arr) {
-  const uniqueArray = [];
-  const seenValues = {};
-
-  for (const value of arr) {
-    if (!seenValues[value]) {
-      uniqueArray.push(value);
-      seenValues[value] = true;
-    }
-  }
-  return uniqueArray;
-}
-
-// direct and inverse action on the array -- start
-function explodeArrayInterleave(srcArr) {
-  const evenArr = [];
-  const oddArr = [];
-  // take through one
-  for (let i = 0; i < srcArr.length; i++) {
-    if (i % 2 === 0) {
-      evenArr.push(srcArr[i]);
-    } else {
-      oddArr.push(srcArr[i]);
-    }
-  }
-  return [evenArr, oddArr];
-}
-function joinArraysInterleave(arr1, arr2) {
-  if (arr1.length !== arr2.length) throw new Error('diff arr len');
-  const result = [];
-  for (let i = 0; i < arr1.length; i++) {
-    result.push(arr1[i]);
-    result.push(arr2[i]);
-  }
-  return result;
-}
-// direct and inverse action on the array -- end
-
 function splitArrayInHalf(arr) {
   const middleIndex = Math.floor(arr.length / 2);
   const firstHalf = arr.slice(0, middleIndex);
