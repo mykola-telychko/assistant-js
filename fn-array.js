@@ -108,4 +108,101 @@ const compareArrays2 = (arr, arrForCompare) => {
 };
 
 
+/**
+ * Identifies and returns an array of duplicate values from the input array.
+ *
+ * @param {Array} arr - The input array to check for duplicate values.
+ * @returns {Array} - An array containing all unique duplicate values from the input array.
+ *
+ * The function iterates through the input array and identifies duplicates by comparing 
+ * the current index of a value with the index of its first occurrence in the array. 
+ * If a duplicate is found, it is added to the result only if it hasn't been added already.
+ */
+function getDuplicates(arr) {
+  const duplicates = [];
+  for (let i = 0; i < arr.length; i++) {
+    // Check if the current value has appeared before in the array
+    if (arr.indexOf(arr[i]) !== i) {
+      // Add to the result array if not already included
+      if (!duplicates.includes(arr[i])) {
+        duplicates.push(arr[i]);
+      }
+    }
+  }
+  return duplicates;
+}
+
+/**
+ * Returns an array of elements that are common between the source array and the comparison array.
+ *
+ * @param {Array} arrSrc - The source array to check elements from.
+ * @param {Array} arr - The comparison array to find common elements with.
+ * @returns {Array} - An array of elements that exist in both input arrays.
+ *
+ * This function identifies the intersection of two arrays by filtering elements in the source array that are present in the comparison array.
+ */
+function getCommonElements(arrSrc, arr) {
+  return arrSrc.filter((el) => arr.includes(el));
+}
+
+
+/**
+ * Returns the elements present in the source array that are not present in the comparison array.
+ * Optionally checks for duplicates in the arrays before comparison.
+ *
+ * @param {Array} arrSrc - The source array to compare elements from.
+ * @param {Array} arr - The comparison array to check against.
+ * @param {boolean} [checkDuplicate=true] - Whether to handle duplicates in the arrays.
+ * @returns {Array} - An array of elements unique to the source array based on the selected mode.
+ *
+ * This function compares two arrays and identifies elements in the source array that are not in the comparison array.
+ * It has two modes:
+ * 1. With duplicate handling (`checkDuplicate = true`): Removes duplicates first and then finds differences.
+ * 2. Without duplicate handling (`checkDuplicate = false`): Handles duplicates explicitly by analyzing unique and duplicate elements separately.
+ */
+function getDifferentElements(arrSrc, arr, checkDuplicate = true) {
+  // Mode 1: Check for duplicates before comparison
+  if (checkDuplicate) {
+    // Remove duplicates from both arrays using `uniqueElArray`
+    let arr1 = uniqueElArray(arrSrc);
+    let arr2 = uniqueElArray(arr);
+
+    // Return elements from arr1 that are not in arr2
+    return arr1.filter((el) => !arr2.includes(el));
+  } else {
+  // Mode 2: Without duplicate handling
+
+    // Extract unique elements from both arrays
+    let ar1 = uniqueElArray(arrSrc);
+    let ar2 = uniqueElArray(arr);
+
+    // Find elements unique to arrSrc
+    let res = ar1.filter((el) => !ar2.includes(el));
+
+    // Find duplicate elements from both arrays using `getDuplicates`
+    let arr1Duplicates = getDuplicates(arrSrc);
+    let arr2Duplicates = getDuplicates(arr);
+
+    // Combine duplicates and unique elements, ensuring no duplicates in the final result
+    let result = uniqueElArray(
+      joinArrays(joinArrays(arr1Duplicates, arr2Duplicates), res)
+    );
+
+    return res;
+  }
+}
+
+/**
+ * Combines two arrays into one by concatenation.
+ *
+ * @param {Array} arr1 - The first array to combine.
+ * @param {Array} arr2 - The second array to combine.
+ * @returns {Array} - A new array containing all elements from both arrays.
+ */
+function joinArrays(arr1, arr2) {
+  return arr1.concat(arr2);
+}
+
+
+
   
