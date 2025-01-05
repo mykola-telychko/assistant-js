@@ -159,7 +159,9 @@ function getCommonElements(arrSrc, arr) {
  * It has two modes:
  * 1. With duplicate handling (`checkDuplicate = true`): Removes duplicates first and then finds differences.
  * 2. Without duplicate handling (`checkDuplicate = false`): Handles duplicates explicitly by analyzing unique and duplicate elements separately.
- */
+ * console.log( compareArrays(arrBig2, arrBig, 'com') );
+ * console.log( compareArrays(arrBig2, arrBig, 'diff') );
+*/
 function getDifferentElements(arrSrc, arr, checkDuplicate = true) {
   // Mode 1: Check for duplicates before comparison
   if (checkDuplicate) {
@@ -188,7 +190,7 @@ function getDifferentElements(arrSrc, arr, checkDuplicate = true) {
       joinArrays(joinArrays(arr1Duplicates, arr2Duplicates), res)
     );
 
-    return res;
+    return result;
   }
 }
 
@@ -202,6 +204,68 @@ function getDifferentElements(arrSrc, arr, checkDuplicate = true) {
 function joinArrays(arr1, arr2) {
   return arr1.concat(arr2);
 }
+
+
+/**
+ * Compares two arrays based on the specified mode.
+ *
+ * @param {Array} arr1 - The first array to compare.
+ * @param {Array} arr2 - The second array to compare.
+ * @param {boolean|string} [mod=true] - The mode of comparison:
+ *   - If `mod` is `'com'`, it finds and returns unique common elements.
+ *   - If `mod` is `'diff'`, it returns unique elements that differ between the arrays.
+ *   - If `mod` is any other truthy value, it checks if the arrays are equal.
+ *   - If `mod` is `false`, the function returns `undefined`.
+ * @returns {Array|boolean|undefined} - The result of the comparison:
+ *   - An array of unique common elements for `'com'` mode.
+ *   - An array of unique differing elements for `'diff'` mode.
+ *   - A boolean indicating whether the arrays are equal for other truthy `mod` values.
+ *   - `undefined` if `mod` is `false`.
+ */
+function compareArrays(arr1, arr2, mod = true) {
+  if (mod !== false) {
+    if (mod === 'com') {
+      // Finds and returns unique common elements between the arrays
+      return uniqueElArray(getCommonElements(arr1, arr2));
+    } else if (mod === 'diff') {
+      // Finds and returns unique differing elements between the arrays
+      return getDifferentElements(arr1, arr2, false);
+    } else {
+      // Compares the arrays for equality
+      return equalArrays(arr1, arr2);
+    }
+  }
+}
+
+
+/**
+ * Compares two arrays to determine if they are equal.
+ *
+ * @param {Array} array1 - The first array to compare.
+ * @param {Array} array2 - The second array to compare.
+ * @returns {boolean} - Returns `true` if the arrays are equal, `false` otherwise.
+ * 
+ * The arrays are considered equal if:
+ *   - They have the same length.
+ *   - They contain the same elements, regardless of their order.
+ */
+function equalArrays(array1, array2) {
+  // Check if the arrays have the same length
+  if (array1.length !== array2.length) return false;
+
+  // Sort both arrays to ensure order doesn't affect comparison
+  array1.sort();
+  array2.sort();
+
+  // Compare the sorted arrays element by element
+  for (let i = 0; i < array1.length; i++) {
+    if (array1[i] !== array2[i]) return false;
+  }
+
+  // If all elements are equal, the arrays are equal
+  return true;
+}
+
 
 
 

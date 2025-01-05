@@ -38,19 +38,6 @@ function compareArrays(arr1, arr2, mod = true) {
     }
   }
 }
-function equalArrays(array1, array2) {
-  // Check if the arrays have the same length
-  if (array1.length !== array2.length) return false;
-  // Sort both arrays to ensure order doesn't affect comparison
-  array1.sort();
-  array2.sort();
-  // Compare the sorted arrays element by element
-  for (let i = 0; i < array1.length; i++) {
-    if (array1[i] !== array2[i]) return false;
-  }
-  // If all elements are equal, the arrays are equal
-  return true;
-}
 
 const arrBig = [1, 3, 4, 5, 6, 7];
 const arrBig2 = [1, 3, 4, 5, 6, 7];
@@ -88,7 +75,6 @@ function arrayOfObjDiff(array1, array2) {
 
 let [half1, half2] = splitArrayInHalf(arr0);
 // join two arrays  explodeArray
-const uniqueElArr = uniqueElArray(arrNonUniqueElements);
 
 // direct and inverse action on the array -- start
 const [evenArr, oddArr] = explodeArrayInterleave(uniqueElArr);
