@@ -310,7 +310,8 @@ console.log(arrayOfObjDiff(array1, array2, 'name'));
 
 /**
  * Moves a specified number of elements from the start of `sourceArray` to `targetArray`.
- *
+ * from sourceArray to targetArray move qty elements 
+ * 
  * @param {Array} sourceArray - The array from which elements will be moved.
  * @param {Array} targetArray - The array to which elements will be added.
  * @param {number} qty - The number of elements to move from the sourceArray.
