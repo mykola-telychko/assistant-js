@@ -267,6 +267,66 @@ function equalArrays(array1, array2) {
 }
 
 
+/**
+ * Returns an array of objects from `mainArr` that do not have matching `key` values in `compareArr`.
+ *
+ * @param {Array} mainArr - The main array of objects to filter.
+ * @param {Array} compareArr - The array of objects to compare against.
+ * @param {string} key - The key in the objects to use for comparison.
+ * @returns {Array} - A filtered array of objects from `mainArr`.
+ */
+function arrayOfObjDiff(mainArr, compareArr, key) {
+  const valueSet = new Set(compareArr.map((obj) => obj[key]));
+  return mainArr.filter((obj) => !valueSet.has(obj[key]));
+}
+
+const array1 = [
+  { id: 275, ipUsr: '444.42.22.109', name: 'bank' },
+  { id: 28, ipUsr: '444.63.22.127', name: 'airport' },
+  { id: 12, ipUsr: '544.43.32.246', name: 'bank' },
+  { id: 18, ipUsr: '545.46.92.122', name: 'airport' },
+  { id: 15, ipUsr: '564.75.66.136', name: 'bank' },
+];
+const array2 = [
+  { id: 75, ipUsr: '222.63.62.339', name: 'bank' },
+  { id: 14, ipUsr: '544.43.32.246', name: 'pharmacy' },
+  { id: 58, ipUsr: '545.46.92.122', name: 'airport' },
+];
+// Filter by `ipUsr`
+console.log(arrayOfObjDiff(array1, array2, 'ipUsr'));
+// Output: [
+//   { id: 275, ipUsr: '444.42.22.109', name: 'bank' },
+//   { id: 28, ipUsr: '444.63.22.127', name: 'airport' },
+//   { id: 15, ipUsr: '564.75.66.136', name: 'bank' }
+// ]
+
+// Filter by `name`
+console.log(arrayOfObjDiff(array1, array2, 'name'));
+// Output: [
+//   { id: 12, ipUsr: '544.43.32.246', name: 'bank' },
+//   { id: 15, ipUsr: '564.75.66.136', name: 'bank' }
+// ]
+
+
+/**
+ * Moves a specified number of elements from the start of `sourceArray` to `targetArray`.
+ *
+ * @param {Array} sourceArray - The array from which elements will be moved.
+ * @param {Array} targetArray - The array to which elements will be added.
+ * @param {number} qty - The number of elements to move from the sourceArray.
+ * @returns {Array} - A new array containing the contents of `targetArray` with the moved elements.
+ *
+ * @throws {Error} If `sourceArray` or `targetArray` are not arrays, or if `count` is negative.
+ */
+function draggingElements(sourceArray, targetArray, qty) {
+  if (!Array.isArray(sourceArray) || !Array.isArray(targetArray) || qty < 0) {
+    throw new Error('incorrect params');
+  }
+  const elementsToMove = sourceArray.slice(0, qty); // Copy elements, don't delete them
+  const newTargetArray = [...targetArray, ...elementsToMove];
+  return newTargetArray;
+}
+
 
 
   
