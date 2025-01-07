@@ -144,6 +144,7 @@ function getDuplicates(arr) {
 function getCommonElements(arrSrc, arr) {
   return arrSrc.filter((el) => arr.includes(el));
 }
+// getCommonElements - getDifferentElements - union = compareArrays
 
 
 /**
@@ -320,6 +321,7 @@ console.log(arrayOfObjDiff(array1, array2, 'name'));
  * @throws {Error} If `sourceArray` or `targetArray` are not arrays, or if `count` is negative.
  */
 function draggingElements(sourceArray, targetArray, qty) {
+  // isArr - use here ? 
   if (!Array.isArray(sourceArray) || !Array.isArray(targetArray) || qty < 0) {
     throw new Error('incorrect params');
   }
@@ -328,6 +330,64 @@ function draggingElements(sourceArray, targetArray, qty) {
   return newTargetArray;
 }
 
+
+
+/**
+ * Retrieves a random element from an array without modifying the array.
+ * 
+ * getting random element from array 
+ * 
+ * @param {Array} arr - The input array from which to retrieve a random element.
+ * @returns {*} - A random element from the array.
+ *
+ * @throws {Error} If the array is empty or not an array.
+ */
+function getRandElFromArray(arr) {
+  isArr(arr);
+  const randomIndex = Math.floor(Math.random() * arr.length); // Generate a random index
+  return arr[randomIndex]; // Return the element at the random index
+}
+
+
+/**
+ * Validates if the input is a non-empty array.
+ *
+ * @param {Array} arr - The input to validate.
+ * @throws {Error} Throws an error if the input is not an array or if the array is empty.
+ *
+ * @example
+ * isArr([1, 2, 3]); // Passes, no error thrown.
+ * isArr([]); // Throws an error: "empty array"
+ * isArr('not an array'); // Throws an error: "empty array"
+ */
+function isArr(arr) {
+  if (!Array.isArray(arr) || arr.length === 0) {
+    throw new Error("empty array");
+  }
+}
+
+
+/**
+ * Randomly shuffles the elements of an array.
+ *
+ * @param {Array} arr - The array to shuffle.
+ * @returns {Array} - A new array with the elements shuffled.
+ *
+ * @throws {Error} If the input is not a valid array.
+ */
+function shuffleArray(arr) {
+  if (!Array.isArray(arr)) {
+    throw new Error("Input must be an array.");
+  }
+
+  const shuffled = [...arr]; // Create a copy of the array to avoid mutating the original
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const randomIndex = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[i]]; // Swap elements
+  }
+
+  return shuffled;
+}
 
 
   
