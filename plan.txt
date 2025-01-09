@@ -2,6 +2,8 @@
 2) compareArrays - more correct responses 
 3) objKeyExists -> objLevelKeyExists
 
+- add fns from prj-slavic-names for read-parse-handle-write
+
 uniqueElArray - add checker type. fn must work only with: 
 Single-type arrays, Typed arrays, Homogeneous arrays
 
