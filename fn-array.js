@@ -390,4 +390,60 @@ function shuffleArray(arr) {
 }
 
 
-  
+/**
+ * Splits an array into two halves and an optional pivot element.
+ * 
+ * If the array has an even length, it is divided into two equal halves, and the pivot array is empty.
+ * If the array has an odd length, the middle element is included in the second half, or it can be manipulated using the `mod` parameter.
+ * 
+ * @param {Array} arr - The input array to split.
+ * @param {number} [mod=0] - Determines the rearrangement of elements when the array has an odd length:
+ *   - `0` (default): Keeps the middle element in the second half.
+ *   - `1`: Swaps the first and second halves.
+ *   - `2`: Moves the pivot element to the end of the second half.
+ * @returns {Array[]} An array containing three arrays: [firstHalf, secondHalf, pivotArr].
+ *   - `firstHalf`: The first half of the input array.
+ *   - `secondHalf`: The second half of the input array.
+ *   - `pivotArr`: An array containing the pivot element (or empty if the input array length is even).
+ */
+function splitArrayInHalf(arr, mod = 0) {
+  if (arr.length === 0) {
+    return []; // Return an empty array for an empty input.
+  }
+
+  const pivotEl = Math.floor(arr.length / 2);
+  let firstHalf, secondHalf, pivotArr;
+
+  if (arr.length % 2 === 0) {
+    // If the array length is even
+    firstHalf = arr.slice(0, pivotEl);
+    secondHalf = arr.slice(pivotEl);
+    pivotArr = []; 
+  } else {
+    // If the array length is odd
+    firstHalf = arr.slice(0, pivotEl);
+    secondHalf = [arr[pivotEl]]; // Middle element is placed in the second half
+    pivotArr = arr.slice(pivotEl + 1);
+
+    // Modify the split based on the `mod` parameter
+    if (mod === 1) {
+        // [firstHalf, secondHalf] = [secondHalf, firstHalf];
+        const middleIndex = Math.floor(arr.length / 2);
+        const firstHalf = arr.slice(0, middleIndex);
+        const secondHalf = arr.slice(middleIndex);
+        let pivotArr = [];
+        return [firstHalf, secondHalf, pivotArr];
+    } else if (mod === 2) {
+      [secondHalf, pivotArr] = [pivotArr, secondHalf];
+    }
+  }
+  return [firstHalf, secondHalf, pivotArr];
+}
+// Example usage
+let arr0 = [
+  8, 9, 7, 7, 6, 1, 8, 3, 9, 9, 4, 4, 6, 4, 3, 5, 2, 8, 1, 6, 1
+];
+let [half1, pivot, half2] = splitArrayInHalf(arr0);
+console.log(half1); 
+console.log(half2); 
+console.log(pivot); 
