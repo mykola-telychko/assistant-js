@@ -447,3 +447,21 @@ let [half1, pivot, half2] = splitArrayInHalf(arr0);
 console.log(half1); 
 console.log(half2); 
 console.log(pivot); 
+
+
+/**
+ * Flattens a nested array into a single-level array.
+ * 
+ * This function utilizes the `Array.prototype.flat` method with an `Infinity` depth,
+ * ensuring that all nested levels of the input array are recursively flattened.
+ * 
+ * @param {Array} arr - The input array, which may contain nested arrays at any depth.
+ * @returns {Array} A new array that is a flattened version of the input array.
+ * 
+ * @example
+ * const arr1 = [1, 3, [4, [5, [2]]], 6, 7];
+ * console.log(flattenArray(arr1)); // Output: [1, 3, 4, 5, 2, 6, 7]
+ */
+const flattenArray = (arr) => arr.flat(Infinity);
+const arr1 = [1, 3, [4, [5, [2]]], 6, 7];
+console.log(flattenArray(arr1));

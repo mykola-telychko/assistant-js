@@ -11,20 +11,7 @@ const obje = {
 const arrBig = [1, 3, 4, 5, 6, 7];
 const arrBig2 = [1, 3, 4, 5, 6, 7];
 const arrSmall = [1, 3, 4];
-// const commonElements = getCommonElements(arrBig, arrSmall);
-let arr32 = compareArrays(arrBig, arrBig2);
-// join two arrays  explodeArray
-// direct and inverse action on the array -- start
-const [evenArr, oddArr] = explodeArrayInterleave(uniqueElArr);
-const unionArrs = joinArraysInterleave(half1, half2);
-// direct and inverse action on the array -- end
-
-
-
-// Flatten Array
-// Flattens a multi-dimensional array into a single level.
-   const flattenArray = (arr) => arr.flat(Infinity);
-   
+// join two arrays  explodeArray   
 
 //  Unique Elements
 //  Filters out duplicate elements in an array.
