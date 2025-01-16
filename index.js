@@ -13,22 +13,6 @@ const arrBig2 = [1, 3, 4, 5, 6, 7];
 const arrSmall = [1, 3, 4];
 // join two arrays  explodeArray   
 
-//  Unique Elements
-//  Filters out duplicate elements in an array.
-   const uniqueArray = (arr) => [...new Set(arr)];
-   
-
-// Chunk Array
-// Divides an array into smaller arrays of a specified size.
-   const chunkArray = (arr, size) => 
-     arr.reduce((acc, _, i) => (i % size === 0 ? [...acc, arr.slice(i, i + size)] : acc), []);
-   
-
-// Shuffle Array
-//  Randomizes the order of elements in an array.
-   const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5);
-   
-
 // Group by Key
 //    Groups an array of objects by a specific key.
    const groupBy = (arr, key) => 

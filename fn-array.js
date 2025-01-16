@@ -19,6 +19,7 @@ function uniqueElArray(arr) {
     }
     return uniqueArray;
 }
+const uniqueArray = (arr) => [...new Set(arr)];
 
 
 /**
@@ -368,7 +369,7 @@ function isArr(arr) {
 
 
 /**
- * Randomly shuffles the elements of an array.
+ * Randomly shuffles the elements of an array/ Randomizes the order of elements in an array.
  *
  * @param {Array} arr - The array to shuffle.
  * @returns {Array} - A new array with the elements shuffled.
@@ -388,6 +389,7 @@ function shuffleArray(arr) {
 
   return shuffled;
 }
+const shuffleArray = (arr) => arr.sort(() => Math.random() - 0.5);
 
 
 /**
@@ -465,3 +467,31 @@ console.log(pivot);
 const flattenArray = (arr) => arr.flat(Infinity);
 const arr1 = [1, 3, [4, [5, [2]]], 6, 7];
 console.log(flattenArray(arr1));
+
+
+
+/**
+ * Splits an array into chunks of a specified size./ Divides an array into smaller arrays of a specified size.
+ * 
+ * This function utilizes the `Array.prototype.reduce` method to divide the input array
+ * into smaller arrays (chunks) of the specified size.
+ * 
+ * @param {Array} arr - The input array to be chunked.
+ * @param {number} size - The size of each chunk.
+ * @returns {Array[]} A new array containing sub-arrays (chunks) of the specified size.
+ * 
+ * @example
+ * const arr = [8, 9, 7, 7, 6, 1, 8, 3, 9, 9, 4, 4, 6, 4, 3, 5, 2, 8, 1, 6];
+ * console.log(chunkArray(arr, 5));
+ * // Output: [[8, 9, 7, 7, 6], [1, 8, 3, 9, 9], [4, 4, 6, 4, 3], [5, 2, 8, 1, 6]]
+ */
+const chunkArray = (arr, size) => 
+  arr.reduce(
+    (acc, _, i) => (
+      i % size === 0 ? [...acc, arr.slice(i, i + size)] : acc), []
+  );
+
+let arr = [
+  8, 9, 7, 7, 6, 1, 8, 3, 9, 9, 4, 4, 6, 4, 3, 5, 2, 8, 1, 6,
+];
+console.log(chunkArray(arr, 5));
