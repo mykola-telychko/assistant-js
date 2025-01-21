@@ -452,8 +452,8 @@ console.log(pivot);
 
 
 /**
- * Flattens a nested array into a single-level array.
- * 
+ * Flattens a nested array into a single-level array. array_merge in php
+ *  
  * This function utilizes the `Array.prototype.flat` method with an `Infinity` depth,
  * ensuring that all nested levels of the input array are recursively flattened.
  * 
@@ -495,3 +495,38 @@ let arr = [
   8, 9, 7, 7, 6, 1, 8, 3, 9, 9, 4, 4, 6, 4, 3, 5, 2, 8, 1, 6,
 ];
 console.log(chunkArray(arr, 5));
+
+
+/**
+ * Splits an array into a specified number of nearly equal-sized subarrays.
+ * Distributes elements as evenly as possible, assigning extra elements to the first partitions.
+ * array_chunk in php
+ * 
+ * @param {Array} list - The input array to be partitioned.
+ * @param {number} parts - The number of subarrays to divide the list into.
+ * @returns {Array[]} A new array containing `parts` subarrays with distributed elements.
+ *
+ * @example
+ * const inputArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'r', 1, 4, 5, 6, 7];
+ * const chunks = partition(inputArray, 4);
+ * console.log(chunks);
+ * // Output: [['a', 'b', 'c', 'd'], ['e', 'f', 'g'], ['r', 1, 4], [5, 6, 7]]
+ */
+function partition(list, parts) {
+    const result = [];
+    const listLen = list.length;
+    const partLen = Math.floor(listLen / parts);
+    let mark = 0;
+    for (let i = 0; i < parts; i++) {
+      const incr = i < listLen % parts ? partLen + 1 : partLen;
+      result.push(list.slice(mark, mark + incr));
+      mark += incr;
+    }
+
+    return result;
+}
+
+const inputArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'r', 1, 4, 5, 6, 7];
+const qtyNestedEl = 4;
+const chunks = partition(inputArray, qtyNestedEl);
+
