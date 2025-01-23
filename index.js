@@ -13,15 +13,9 @@ const arrBig2 = [1, 3, 4, 5, 6, 7];
 const arrSmall = [1, 3, 4];
 // join two arrays  explodeArray   
 
-// Group by Key
-//    Groups an array of objects by a specific key.
-   const groupBy = (arr, key) => 
-     arr.reduce((acc, obj) => ({ ...acc, [obj[key]]: [...(acc[obj[key]] || []), obj] }), {});
-   
-
 // Filter by Key
 //    Filters objects in an array by a specific key and value.
-   const filterByKey = (arr, key, value) => arr.filter(obj => obj[key] === value);
+const filterByKey = (arr, key, value) => arr.filter(obj => obj[key] === value);
    
 
 // Intersection

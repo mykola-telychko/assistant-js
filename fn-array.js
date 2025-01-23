@@ -530,3 +530,49 @@ const inputArray = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'r', 1, 4, 5, 6, 7];
 const qtyNestedEl = 4;
 const chunks = partition(inputArray, qtyNestedEl);
 
+
+
+/**
+ * Groups an array of objects by a specified key.
+ * - Group by Key
+ * This function uses `Array.prototype.reduce` to transform an array of objects 
+ * into an object where keys correspond to unique values of the specified property,
+ * and values are arrays of objects that share that key.
+ *
+ * @param {Object[]} arr - The array of objects to be grouped.
+ * @param {string} key - The object property to group by.
+ * @returns {Object} An object where each key is a unique value from the specified property,
+ *                   and its value is an array of objects that have that property value.
+ *
+ * @example
+ * const people = [
+ *   { name: 'Alice', age: 35 },
+ *   { name: 'Bob', age: 25 },
+ *   { name: 'El', age: 12 },
+ * ];
+ * 
+ * const groupedByAge = groupBy(people, 'age');
+ * console.log(groupedByAge);
+ * // Output:
+ * // { "35": [{ name: 'Alice', age: 35 }],
+ * //   "25": [{ name: 'Bob', age: 25 }],
+ * //   "30": [{ name: 'Charlie', age: 30 }, { name: 'Rob', age: 30 }],
+ * //   "12": [{ name: 'El', age: 12 }] }
+ */
+const groupBy = (arr, key) =>
+      arr.reduce((acc, obj) => 
+        ({ ...acc, [obj[key]]: [...(acc[obj[key]] || []), obj] }), 
+      {});
+
+// use
+const people = [
+  { name: 'Alice', age: 35 },
+  { name: 'Bob', age: 25 },
+  { name: 'Charlie', age: 30 },
+  { name: 'Rob', age: 30 },
+  { name: 'El', age: 12 },
+];
+
+const groupedByAge = groupBy(people, 'age');
+console.log(groupedByAge);
+
