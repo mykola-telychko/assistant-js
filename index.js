@@ -13,6 +13,25 @@ const arrBig2 = [1, 3, 4, 5, 6, 7];
 const arrSmall = [1, 3, 4];
 // join two arrays  explodeArray   
 
+
+// sort on last char // add rule. words that end in vowels
+const arr = ['Nastja', 'Nasuf', 'Natan', 'Natanael', 'Natan'];
+
+arr.sort((a, b) => {
+  const lastA = a.charAt(a.length - 1);
+  const lastB = b.charAt(b.length - 1);
+
+  if (lastA < lastB) {
+    return -1;
+  }
+  if (lastA > lastB) {
+    return 1;
+  }
+  return 0;
+});
+
+console.log(arr); 
+
 // Filter by Key
 //    Filters objects in an array by a specific key and value.
 const filterByKey = (arr, key, value) => arr.filter(obj => obj[key] === value);
