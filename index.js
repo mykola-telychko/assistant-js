@@ -112,13 +112,3 @@ const filterByKey = (arr, key, value) => arr.filter(obj => obj[key] === value);
 // Compares two objects for deep equality.
    const deepEqual = (obj1, obj2) => 
      JSON.stringify(obj1) === JSON.stringify(obj2);
-  
-
-// Pick and Omit
-// Picks or omits specific keys from an object.
-    const pick = (obj, keys) => 
-      Object.fromEntries(Object.entries(obj).filter(([key]) => keys.includes(key)));
-    const omit = (obj, keys) => 
-      Object.fromEntries(Object.entries(obj).filter(([key]) => !keys.includes(key)));
-
-
