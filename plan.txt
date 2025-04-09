@@ -1,4 +1,4 @@
-1) describe every fns in separate file (index.html)
+1) codepan or jsbin with code example - githubpages / vercel
 2) compareArrays - more correct responses 
 3) objKeyExists -> objLevelKeyExists
 
