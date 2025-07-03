@@ -4,6 +4,11 @@
 
 - add fns from prj-slavic-names for read-parse-handle-write
 
+how to create your own function to group objects in an array by one property.
+
+- two array to object
+https://stackoverflow.com/questions/39127989/create-an-object-from-an-array-of-keys-and-an-array-of-values
+
 uniqueElArray - add checker type. fn must work only with: 
 Single-type arrays, Typed arrays, Homogeneous arrays
 

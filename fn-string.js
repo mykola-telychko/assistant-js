@@ -19,3 +19,6 @@ function isEmptyStr(str) {
 function checkSubstring(mainString, subString) {
   return mainString.includes(subString);
 }
+
+// reverse string 
+const revStr = (str) => { return str.split("").reverse().join(""); }
