@@ -52,3 +52,20 @@ console.log(result);
 
 // SEARCH KEY ON VALUE
 let getKeyByValue = (object, value) => { return Object.keys(object).find(key => object[key] === value); }
+
+
+let ar1 = [12, 43, 45, 21, 87];
+let ar2 = [72, 23, 75, 71, 17];
+
+function combs(arr1, arr2) {
+  let res = [];
+
+  for(let i = 0; i < arr1.length; i++){
+   for(let k = 0; k < arr2.length; k++){
+      res.push(`${arr1[i]}, ${arr2[k]}`);
+   }
+  }
+  return res;
+}
+
+console.log(combs(ar1, ar2));
